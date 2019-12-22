@@ -21,6 +21,11 @@ variable "name" {
   default     = ""
 }
 
+variable "description" {
+  description = "A description for the IAM role"
+  default     = ""
+}
+
 variable "path" {
   description = "Path under which the role resides"
   default     = "/"
@@ -29,6 +34,18 @@ variable "path" {
 variable "trust_policy" {
   description = "The trust policy for this role"
   default     = ""
+}
+
+variable "force_detach_policies" {
+  description = "Forces the policies to be detached before destroying the role"
+  type        = bool
+  default     = false
+}
+
+variable "max_session_duration" {
+  description = "The maximum session duration (in seconds) that you want to set for the specified role. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 1 hour (3600 seconds) to 12 hours (43200)"
+  type        = number
+  default     = 3600
 }
 
 variable "customer_policies" {
