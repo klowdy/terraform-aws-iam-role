@@ -18,11 +18,16 @@ The below snippet is the suggested implementation for creating an IAM role with 
 
 ```hcl
 module "iam_role" {
-  source = "klowdy/terraform-aws-iam-role"
+  source = "klowdy/iam-role/aws"
 
   create              = true
   is_instance_profile = true
   name                = "MyAwesomeIAMRole"
+  description         = "IAM Role to do something"
+
+  force_detach_policies = true
+  max_session_duration  = 43200
+
 
   trust_policy = concat(data.aws_iam_policy_document.MyTrustPolicy.*.json, [""])[0]
 
